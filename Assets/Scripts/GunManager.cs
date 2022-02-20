@@ -6,26 +6,36 @@ public class GunManager : MonoBehaviour
 {
 
     [SerializeField] private Animator gunBlowBack;
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject barrelEnd;
+
+
+    [SerializeField] private float fireRate = .1f;
+    [SerializeField] private float bulletSpeed;
 
     private bool isShooting;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void PullTrigger(){
-        isShooting = true;
-        gunBlowBack.Play("PistolBlowBack");
+        Debug.Log("trigger pulled");
+        if(!isShooting){
+            StartCoroutine(FireRate());
+        }
     }
 
-    public void ResetShooting(){
-        
+    private void FireProjectile(){
+        Debug.Log("fire");
+        gunBlowBack.Play("PistolBlowBack");
+        GameObject bullet = Instantiate(bulletPrefab, barrelEnd.transform.position, barrelEnd.transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * (bulletSpeed * -1));
+    }
+
+    IEnumerator FireRate(){
+        isShooting = true;
+        Debug.Log(isShooting);
+        FireProjectile();
+        yield return new WaitForSeconds(fireRate);
+        isShooting = false;
+        Debug.Log(isShooting);
     }
 }
