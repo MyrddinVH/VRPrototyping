@@ -2190,6 +2190,7 @@ MonoBehaviour:
   gunBlowBack: {fileID: 987553581}
   bulletPrefab: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471, type: 3}
   barrelEnd: {fileID: 883299848}
+  blowBackAnimName: PistolBlowBack
   fireRate: 0.1
   bulletSpeed: 10
 --- !u!1 &2135645197
