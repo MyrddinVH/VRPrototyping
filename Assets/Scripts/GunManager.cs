@@ -12,6 +12,14 @@ public class GunManager : MonoBehaviour
     private bool isShooting;
     private bool isShootingAuto;
 
+    void Update(){
+        if(isShootingAuto){
+            if(!isShooting){
+                StartCoroutine(FireRate());
+            }
+        }
+    }
+
     public void PullTrigger(){
         if(!isShooting){
             StartCoroutine(FireRate());
@@ -47,7 +55,8 @@ public class GunManager : MonoBehaviour
     }
 
     private void EjectCasing(){
-        GameObject tempCase = Instantiate(weaponData.bulletCase, casingEjectPos.position,Quaternion.identity) as GameObject;
-        tempCase.GetComponent<Rigidbody>().velocity = new Vector3(1,1,0);
+        GameObject tempCase = Instantiate(weaponData.bulletCase, casingEjectPos.position, casingEjectPos.rotation) as GameObject;
+        // tempCase.GetComponent<Rigidbody>().velocity = new Vector3(transform.localPosition.x,transform.localPosition.y,0);
+        tempCase.GetComponent<Rigidbody>().AddRelativeForce(1,1,0 * 2, ForceMode.Impulse);
     }
 }
