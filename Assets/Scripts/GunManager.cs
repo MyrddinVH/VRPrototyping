@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class GunManager : MonoBehaviour
 {
-
-    [SerializeField] private Animator gunBlowBack;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private WeaponData weaponData;
+    [SerializeField] private Animator kickBackAnimator;
     [SerializeField] private GameObject barrelEnd;
-    [SerializeField] private string blowBackAnimName;
-
-
-    [SerializeField] private float fireRate = .1f;
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] private Transform casingEjectPos;
 
     private bool isShooting;
     private bool isShootingAuto;
-
-
 
     public void PullTrigger(){
         if(!isShooting){
@@ -37,21 +30,24 @@ public class GunManager : MonoBehaviour
 
     private void FireProjectile(){
         
-        gunBlowBack.Play(blowBackAnimName);
+        kickBackAnimator.Play(weaponData.animationName);
+        EjectCasing();
 
         RaycastHit hit;
         if(Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)){
             Debug.Log("raycast hit");
         }
-
-        // GameObject bullet = Instantiate(bulletPrefab, barrelEnd.transform.position, barrelEnd.transform.rotation);
-        // bullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * (bulletSpeed * -1));
     }
 
     IEnumerator FireRate(){
         isShooting = true;
         FireProjectile();
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(weaponData.fireRate);
         isShooting = false;
+    }
+
+    private void EjectCasing(){
+        GameObject tempCase = Instantiate(weaponData.bulletCase, casingEjectPos.position,Quaternion.identity) as GameObject;
+        tempCase.GetComponent<Rigidbody>().velocity = new Vector3(1,1,0);
     }
 }
