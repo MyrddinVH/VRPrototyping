@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1723987930970802050}
   - component: {fileID: 7888089270728251398}
-  - component: {fileID: -6043006519910279495}
   m_Layer: 0
   m_Name: BulletCasing
   m_TagString: Untagged
@@ -49,20 +48,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-6043006519910279495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458985641608881707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6009de68fb9a30c4a89617da88e7cf1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToDestroy: 5
+  m_CollisionDetection: 1
 --- !u!1 &6301944235946654229
 GameObject:
   m_ObjectHideFlags: 0
