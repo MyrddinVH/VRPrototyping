@@ -8,12 +8,6 @@ public class GunManager : MonoBehaviour
     [SerializeField] private Animator kickBackAnimator;
     [SerializeField] private GameObject barrelEnd;
     [SerializeField] private Transform casingEjectPos;
-    [SerializeField] private ParticleSystem muzzleFlash;
-    // [SerializeField] private GameObject bulletHole;
-    [SerializeField] private GameObject impactFX;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip SFX;
-    
 
     private bool isShooting;
     private bool isShootingAuto;
@@ -45,16 +39,11 @@ public class GunManager : MonoBehaviour
     private void FireProjectile(){
         
         kickBackAnimator.Play(weaponData.animationName);
-        muzzleFlash.Play();
-        audioSource.PlayOneShot(SFX);
         EjectCasing();
 
         RaycastHit hit;
         if(Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)){
             Debug.Log("raycast hit");
-            // GameObject bH = Instantiate(bulletHole, hit.point + new Vector3(0f,0f,0f), Quaternion.LookRotation(-hit.normal));
-            GameObject impactEffect = Instantiate(impactFX, hit.point + new Vector3(0f,0f,-.02f), Quaternion.LookRotation(hit.normal));
-            Destroy(impactEffect, 1f);
         }
     }
 
@@ -67,7 +56,7 @@ public class GunManager : MonoBehaviour
 
     private void EjectCasing(){
         GameObject tempCase = Instantiate(weaponData.bulletCase, casingEjectPos.position, casingEjectPos.rotation) as GameObject;
+        // tempCase.GetComponent<Rigidbody>().velocity = new Vector3(transform.localPosition.x,transform.localPosition.y,0);
         tempCase.GetComponent<Rigidbody>().AddRelativeForce(1,1,0 * 2, ForceMode.Impulse);
-        Destroy(tempCase, weaponData.casingLifeTime);
     }
 }

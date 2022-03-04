@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3424d54e24d6fde4f9b7f15be4d30a2f, type: 3}
   m_Name: LMG
   m_EditorClassIdentifier: 
-  bulletCase: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471,
-    type: 3}
+  bulletCase: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471, type: 3}
   fireRate: 0.1
   animationName: LMGKickBAck
-  casingLifeTime: 2
