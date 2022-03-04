@@ -8,4 +8,6 @@ public class WeaponData : ScriptableObject
     public GameObject bulletCase;
     public float fireRate;
     public string animationName;
+    public float casingLifeTime;
+    public AudioClip gunFire;
 }

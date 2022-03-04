@@ -15,3 +15,5 @@ MonoBehaviour:
   bulletCase: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471, type: 3}
   fireRate: 0.1
   animationName: PistolBlowBack
+  casingLifeTime: 2
+  gunFire: {fileID: 8300000, guid: eeeead08d1f60c04ca76b5a96eb733ec, type: 3}
