@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: pistol
   m_EditorClassIdentifier: 
   bulletCase: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471, type: 3}
-  ammo: 20
+  ammo: 25
   fireRate: 0.1
   animationName: PistolBlowBack
   casingLifeTime: 2
