@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: LMG
   m_EditorClassIdentifier: 
   bulletCase: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471, type: 3}
-  fireRate: 0.1
+  ammo: 100
+  fireRate: 0.6
   animationName: LMGKickBAck
+  casingLifeTime: 2
+  gunFire: {fileID: 0}
+  reload: {fileID: 0}
+  noAmmo: {fileID: 0}
+  magInserted: {fileID: 0}

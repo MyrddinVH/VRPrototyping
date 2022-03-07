@@ -11,8 +11,4 @@ public class XRSocketTag : XRSocketInteractor
     {
         return base.CanSelect(interactable) && interactable.transform.CompareTag(targetTag);
     }
-
-    public void MagInserted(){
-
-    }
 }

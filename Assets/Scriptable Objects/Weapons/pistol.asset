@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: pistol
   m_EditorClassIdentifier: 
   bulletCase: {fileID: 1458985641608881707, guid: 8416b1f365bc94747b2b7158cdd1e471, type: 3}
+  ammo: 20
   fireRate: 0.1
   animationName: PistolBlowBack
   casingLifeTime: 2
   gunFire: {fileID: 8300000, guid: eeeead08d1f60c04ca76b5a96eb733ec, type: 3}
+  reload: {fileID: 8300000, guid: e0278997df91c32429b02c409ea92ae9, type: 3}
+  noAmmo: {fileID: 8300000, guid: 443ec4e0088c34547b146c1d2b656e99, type: 3}
+  magInserted: {fileID: 8300000, guid: 5c83b7b22905ff141b0a714a9dc9391a, type: 3}
