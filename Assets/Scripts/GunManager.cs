@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunManager : MonoBehaviour
 {
@@ -18,10 +19,27 @@ public class GunManager : MonoBehaviour
     [SerializeField] private AudioSource SFX;
     [Tooltip("muzzleflash prefab")]
     [SerializeField] private ParticleSystem muzzleFlash;
+    [Tooltip("the default input actions from the XR toolkit")]
+    [SerializeField] private InputActionAsset XRIDefaultInputActions;
+
+    [SerializeField] private XRSocketTag xRSocketTag;
 
     private bool isShooting;
     private bool isShootingAuto;
     private int ammoCurrent;
+    private InputAction pressA;
+
+    void Start(){
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart(){
+        yield return new WaitForSeconds(.1f);
+        var gamePlayActionMap = XRIDefaultInputActions.FindActionMap("Custom");
+        pressA = gamePlayActionMap.FindAction("PressA");
+        pressA.performed += EjectMag;
+        Debug.Log(gamePlayActionMap);
+    }
 
     void Update(){
         if(isShootingAuto){
@@ -81,7 +99,7 @@ public class GunManager : MonoBehaviour
         ammoCurrent = weaponData.ammo;
     }
 
-    public void EjectMag(){
-        
+    public void EjectMag(InputAction.CallbackContext context){
+        xRSocketTag.StartEject();
     }
 }
